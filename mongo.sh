@@ -6,7 +6,7 @@ G="/e[32m"
 Y="/e[33m"
 N="/e[0m"
 
-LOGS_FLODER="/var/log/roboshop-shell"
+LOGS_FOLDER="/var/log/roboshop-shell"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
@@ -40,3 +40,9 @@ VALIDATE $? "enable mongo"
 
 systemctl start mongod
 VALIDATE $? "start mongo"
+
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
+VALIDATE $? " allowing remote connections"
+
+systemctl restart mongod
+VALIDATE $? "restarted mongod"
