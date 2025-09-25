@@ -17,27 +17,26 @@ echo "script started at: $(date)" | tee -a $LOG_FILE
 if [ $USERID -ne 0 ]; then
     echo "ERROR:: please run this script with root privelege"
     exit 1
-if  
+fi  
 
 VALIDATE(){ 
 
   if [ $1 -ne 0 ]; then
-   echo -e "$2 ... $R FAILURE $N" |  tee -a $LOG_FILE
-   exit 1
+      echo -e "$2 ... $R FAILURE $N" |  tee -a $LOG_FILE
+      exit 1
   else 
-    echo -e "$2... $G SUCCESS $N" | tee -a $LOG_FILE
-  if
-
+      echo -e "$2... $G SUCCESS $N" | tee -a $LOG_FILE
+  fi
 }  
 
- cp mongo.repo /etc/yum.repos.d/mongo.repo
- VALIDATE $? "adding mongo repo" 
+cp mongo.repo /etc/yum.repos.d/mongo.repo
+VALIDATE $? "adding mongo repo" 
  
- dnf install mongodb-org -y $>>$LOG_FILE
- VALIDATE $? "install mongo"
+dnf install mongodb-org -y $>>$LOG_FILE
+VALIDATE $? "install mongo"
 
- systemctl enable mongod $>>$LOG_FILE
- VALIDATE $? "enable mongo"
+systemctl enable mongod $>>$LOG_FILE
+VALIDATE $? "enable mongo"
 
- systemctl start mongod $>>$LOG_FILE
- VALIDATE $? "start mongo"
+systemctl start mongod $>>$LOG_FILE
+VALIDATE $? "start mongo"
