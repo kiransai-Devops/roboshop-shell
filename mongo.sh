@@ -38,5 +38,6 @@ VALIDATE $? "install mongo"
 systemctl enable mongod $>>$LOG_FILE
 VALIDATE $? "enable mongo"
 
-systemctl start mongod $>>$LOG_FILE
+systemctl start mongod
 VALIDATE $? "start mongo"
+
