@@ -60,7 +60,7 @@ mvn clean package
 VALIDATE $? "clean package"
 mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
 VALIDATE $? "install"
-cp $SCRIPT_DIR /shipping.service /etc/systemd/system/shipping.service  &>>$LOG_FILE
+cp $SCRIPT_DIR/shipping.service /etc/systemd/system/shipping.service  &>>$LOG_FILE
 VALIDATE $? "shipping service"
 systemctl daemon-reload
 VALIDATE $? "reload"
