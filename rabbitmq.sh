@@ -10,7 +10,7 @@ N="/e[0m"
 
 LOGS_FOLDER="/var/log/roboshop-shell"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
-START_TIME=$(date %+s)
+START_TIME=$(date +%s)
 SCRIPT_DIR=$PWD
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
