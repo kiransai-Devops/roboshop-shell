@@ -47,7 +47,7 @@ VALIDATE $? "Downloading frontend"
 
 
 rm -rf /etc/nginx/nginx.conf
-cp $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf
+cp $SCRIPT_DIR/nginx.conf /etc/nginx/nginx.conf &>>$LOG_FILE
 VALIDATE $? "copying nginx.conf"
 
 
